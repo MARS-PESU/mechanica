@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanica | Inter-College Robotics Competition</title>
+    <meta name="description"
+        content="Register for Mechanica, an inter-college robotics competition by MARS Labs, PES University (RR Campus).">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="bg-overlay"></div>
+    <div class="bg-texture"></div>
+    <div class="custom-cursor">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#00ff00" stroke="#003300" stroke-width="1">
+            <path
+                d="M12 2C7.58 2 4 5.58 4 10c0 4.42 3.58 8 8 8s8-3.58 8-8c0-4.42-3.58-8-8-8zM9 12c-.83 0-1.5-.67-1.5-1.5S8.17 9 9 9s1.5.67 1.5 1.5S9.83 12 9 12zm6 0c-.83 0-1.5-.67-1.5-1.5S14.17 9 15 9s1.5.67 1.5 1.5S15.83 12 15 12z" />
+            <path d="M12 15s-2 0-3-1M12 15s2 0 3-1" stroke="#003300" fill="none" />
+        </svg>
+    </div>
+    <div class="custom-cursor-outline">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="10" width="16" height="8" rx="2" fill="rgba(255, 69, 0, 0.2)" />
+            <circle cx="7" cy="20" r="2" fill="currentColor" />
+            <circle cx="17" cy="20" r="2" fill="currentColor" />
+            <path d="M12 10V6M8 6h8M16 6l2-2" />
+            <circle cx="12" cy="5" r="1.5" fill="currentColor" />
+            <path d="M6 10l-2-3h4l-2 3" fill="currentColor" stroke="none" />
+        </svg>
+    </div>
+
+    <div class="meteors-container"></div>
+    <div class="dust-container"></div>
+
+    <div class="glow-circle"></div>
+    <div class="glow-circle-2"></div>
+
+    <header>
+        <div class="header-content" style="display: flex; align-items: center; gap: 1.5rem;">
+            <a href="https://www.iot.pes.edu/mars" target="_blank" class="logo-link"
+                style="text-decoration: none; border-right: 1px solid var(--card-border); padding-right: 1.5rem;">
+                <img src="assets/header_banner.png" alt="PES University | MARS Labs"
+                    style="height: 50px; width: auto; display: block; filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.2)); transition: transform 0.3s ease;"
+                    onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+            </a>
+            <a href="https://www.iot.pes.edu/mars" target="_blank" class="rover-logo-link"
+                style="text-decoration: none; display: flex; align-items: center; gap: 10px; color: var(--primary); font-family: 'Outfit', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    style="filter: drop-shadow(0 0 5px var(--primary));">
+                    <!-- Rugged Rover Chassis -->
+                    <rect x="8" y="24" width="32" height="12" rx="2" fill="var(--primary)" fill-opacity="0.2"
+                        stroke="currentColor" stroke-width="2" />
+                    <!-- Wheels with spokes -->
+                    <circle cx="12" cy="38" r="4" stroke="currentColor" stroke-width="2" />
+                    <path d="M12 34V42M8 38H16" stroke="currentColor" stroke-width="1" />
+                    <circle cx="24" cy="38" r="4" stroke="currentColor" stroke-width="2" />
+                    <path d="M24 34V42M20 38H28" stroke="currentColor" stroke-width="1" />
+                    <circle cx="36" cy="38" r="4" stroke="currentColor" stroke-width="2" />
+                    <path d="M36 34V42M32 38H40" stroke="currentColor" stroke-width="1" />
+                    <!-- Camera Mast -->
+                    <path d="M16 24V14H24" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <rect x="22" y="10" width="8" height="6" rx="1" fill="currentColor" />
+                    <circle cx="26" cy="13" r="1.5" fill="var(--bg-dark)" />
+                    <!-- Robotic Arm -->
+                    <path d="M36 24V18L42 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <circle cx="42" cy="14" r="2" fill="currentColor" />
+                    <!-- Antenna -->
+                    <path d="M32 24L35 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <circle cx="35" cy="10" r="1" fill="var(--accent)" />
+                </svg>
+                <span style="font-size: 1.1rem; color: #fff; letter-spacing: 2px;">MECHANICA</span>
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero reveal">
+            <svg width="120" height="120" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"
+                style="filter: drop-shadow(0 0 20px var(--primary)); margin-bottom: 2rem; color: var(--primary);">
+                <rect x="8" y="24" width="32" height="12" rx="2" fill="var(--primary)" fill-opacity="0.2"
+                    stroke="currentColor" stroke-width="2" />
+                <circle cx="12" cy="38" r="4" stroke="currentColor" stroke-width="2" />
+                <path d="M12 34V42M8 38H16" stroke="currentColor" stroke-width="1" />
+                <circle cx="24" cy="38" r="4" stroke="currentColor" stroke-width="2" />
+                <path d="M24 34V42M20 38H28" stroke="currentColor" stroke-width="1" />
+                <circle cx="36" cy="38" r="4" stroke="currentColor" stroke-width="2" />
+                <path d="M36 34V42M32 38H40" stroke="currentColor" stroke-width="1" />
+                <path d="M16 24V14H24" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <rect x="22" y="10" width="8" height="6" rx="1" fill="currentColor" />
+                <circle cx="26" cy="13" r="1.5" fill="var(--bg-dark)" />
+                <path d="M36 24V18L42 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <circle cx="42" cy="14" r="2" fill="currentColor" />
+                <path d="M32 24L35 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                <circle cx="35" cy="10" r="1" fill="var(--accent)" />
+            </svg>
+            <h1>MECHANICA<br>
+                <div style="display: flex; align-items: center; justify-content: center; margin-top: 0.5rem;">
+                    <span
+                        style="font-size: 2.5rem; letter-spacing: 5px; background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 700; text-transform: uppercase;">by
+                        MARS Labs</span>
+                </div>
+            </h1>
+            <p>Join the ultimate inter-college robotics showdown hosted by MARS Labs, under the Center for IoT at
+                <strong>PES University</strong>. Bring your robots, compete for glory, and win massive prizes.
+            </p>
+
+            <div class="logistics-badges"
+                style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; font-size: 0.95rem;">
+                <a href="https://share.google/l8xZkcFFzkjlmGw1k" target="_blank"
+                    style="background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: 20px; border: 1px solid var(--card-border); color: inherit; text-decoration: none; display: inline-flex; align-items: center; transition: all 0.3s ease; gap: 5px;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='var(--primary)'"
+                    onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='var(--card-border)'">
+                    <i class="icon">📍</i> PES Uni. RR campus
+                </a>
+                <span
+                    style="background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: 20px; border: 1px solid var(--card-border);"><i
+                        class="icon">📅</i> Event Date: 19th June 2026</span>
+                <span
+                    style="background: rgba(255,69,0,0.1); padding: 5px 15px; border-radius: 20px; border: 1px solid var(--primary); color: var(--primary);"><i
+                        class="icon">⚠️</i> Registration Closes: 13th June 2026</span>
+            </div>
+
+            <div class="badges">
+                <div class="badge prize">🏆 ₹1,00,000+ Prize Pool</div>
+                <div class="badge prize">🎁 Free Goodies for All</div>
+                <div class="badge fee">🪙 Reg Fee: ₹200 / Team</div>
+            </div>
+
+            <a href="#register" class="btn btn-primary">Register Your Team</a>
+        </section>
+
+        <section id="about" class="reveal">
+            <div class="about-grid">
+                <div class="about-content">
+                    <div class="section-header" style="text-align: left;">
+                        <h2>Step Into the Arena</h2>
+                    </div>
+                    <p>Mechanica is the flagship robotics competition organized by <span class="about-highlight">MARS
+                            Labs</span> (Mobile and Autonomous Robotic Systems), under the Center for IoT at <span
+                            class="about-highlight">PES University (RR Campus)</span>.</p>
+                    <p>This is your chance to test your engineering skills, strategic thinking, and autonomous logic
+                        against the best teams from across the nation. Each event has been carefully designed to push
+                        your robots to their limits.</p>
+                    <p><strong>Note:</strong> Participants must build and bring their own robots.</p>
+                </div>
+                <div class="about-image">
+                    <img src="assets/mars_hero_bg.png" alt="Futuristic Mars Robotics Center" />
+                </div>
+            </div>
+        </section>
+
+        <section id="events" class="reveal">
+            <div class="section-header">
+                <h2>The Martian Trials</h2>
+                <p>Four incredible events. Four paths to victory.</p>
+            </div>
+
+            <div class="events-grid">
+                <!-- Red Planet Strikers -->
+                <div class="event-card reveal">
+                    <img src="assets/robo_soccer.png" alt="Robo Soccer" class="event-card-img" />
+                    <div class="event-card-content">
+                        <h3>Red Planet Strikers</h3>
+                        <p>A tactical soccer face-off on the red sand. Control the ball, pass, and score
+                            against your opponents within a 4-minute half.</p>
+                        <button class="btn-rulebook" data-target="modal-soccer">View Rulebook</button>
+                    </div>
+                </div>
+
+                <!-- Titan Tussle -->
+                <div class="event-card reveal">
+                    <img src="assets/robo_sumo.png" alt="Robo Sumo" class="event-card-img" />
+                    <div class="event-card-content">
+                        <h3>Titan Tussle</h3>
+                        <p>A battle of strength and endurance. Push your opponent out of the 150cm circular Dohyo while
+                            remaining inside.</p>
+                        <button class="btn-rulebook" data-target="modal-sumo">View Rulebook</button>
+                    </div>
+                </div>
+
+                <!-- Olympus Dash -->
+                <div class="event-card reveal">
+                    <img src="assets/robo_race.png" alt="Robo Race" class="event-card-img" />
+                    <div class="event-card-content">
+                        <h3>Olympus Dash</h3>
+                        <p>A technical sprint designed to test the limits of your robot's power-to-weight ratio and
+                            handling on a 25-meter dusty track.</p>
+                        <button class="btn-rulebook" data-target="modal-race">View Rulebook</button>
+                    </div>
+                </div>
+
+                <!-- Labyrinth of Curiosity -->
+                <div class="event-card reveal">
+                    <img src="assets/line_follower.png" alt="Line Follower" class="event-card-img" />
+                    <div class="event-card-content">
+                        <h3>Labyrinth of Curiosity</h3>
+                        <p>A test of autonomous precision. Follow a fluctuating black line across acute junctions and
+                            "signal loss" discontinuities.</p>
+                        <button class="btn-rulebook" data-target="modal-maze">View Rulebook</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="register" class="registration-section reveal">
+            <div class="section-header">
+                <h2>Team Registration</h2>
+                <p>Teams can have 1 to 4 members. Registration fee is ₹200 per team.</p>
+            </div>
+
+            <div class="form-container">
+                <!-- FORMSPREE INTEGRATION -->
+                <div
+                    style="display: flex; justify-content: center; overflow: hidden; border-radius: 12px; background: rgba(255,255,255,0.02);">
+                    <iframe
+                        src="https://docs.google.com/forms/d/e/1FAIpQLSckZTLi7kUh7FJ6VZOGb61gVF5pkJGAfPYTlcDEzV7H1hUMdA/viewform?embedded=true"
+                        width="100%" height="1802" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Mechanica | MARS Labs, PES University (RR Campus)</p>
+    </footer>
+
+    <!-- RULEBOOK MODALS -->
+    <!-- Soccer Modal -->
+    <div id="modal-soccer" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Red Planet Strikers (Robo Soccer)</h2>
+            <h3>I. Objective</h3>
+            <p>To design and operate a remote-controlled or semi-autonomous robot capable of navigating a field,
+                controlling a ball, and scoring goals against an opponent.</p>
+
+            <h3>II. Robot Specifications</h3>
+            <ul>
+                <li><strong>Dimensions:</strong> The robot must fit inside a box of 300mm x 300mm x 300mm at the start
+                    of the match. Expansion after the start is permitted, provided it does not exceed 350mm in any
+                    direction. +-5% of tolerance is given.</li>
+                <li><strong>Weight:</strong> Maximum weight must not exceed 3.5 kg (including battery).</li>
+                <li><strong>Power Source:</strong> On-board power only. Maximum voltage allowed is 13V DC.</li>
+                <li><strong>Locomotion:</strong> Can be wheeled, tracked, or legged. Use of suction pads or adhesives to
+                    "hold" the ball is strictly prohibited.</li>
+                <li><strong>Ball Handling:</strong> The robot cannot "wrap" around the ball or encompass more than 50%
+                    of the ball's surface area or even stick itself to the ball/court. The ball must be free to be
+                    "stolen" by the opponent at all times.</li>
+            </ul>
+
+            <h3>III. Arena Specifications</h3>
+            <ul>
+                <li><strong>Field Size:</strong> Approximately 10ft x 6ft, surfaced with green carpet or painted
+                    plywood.</li>
+                <li><strong>Goal Posts:</strong> 600mm wide.</li>
+                <li><strong>Ball:</strong> A standard tennis ball or a high-density foam ball (approx. 65mm diameter).
+                </li>
+            </ul>
+
+            <h3>IV. Gameplay & Scoring</h3>
+            <ul>
+                <li><strong>Format:</strong> 1v1 matches with maximum of two robots per team.</li>
+                <li><strong>Duration:</strong> Two halves of 4 minutes each. A 2-minute "Repair Window" is provided
+                    between halves.</li>
+                <li><strong>Scoring:</strong> 1 point per goal. In the event of a tie, a 2-minute "Golden Goal" period
+                    occurs. If still tied, a "Penalty Shootout" (3 shots each) follows.</li>
+                <li><strong>Kick-off:</strong> The ball is placed at the center. Robots must be behind their respective
+                    goal lines until the whistle blows.</li>
+            </ul>
+
+            <h3>V. Fouls & Penalties</h3>
+            <ul>
+                <li><strong>Yellow Card:</strong> Awarded for "pinning" an opponent against the wall for more than 5
+                    seconds or for minor human interference.</li>
+                <li><strong>Red Card:</strong> Awarded for intentional damage to the arena or the opponent’s internal
+                    circuitry. Result: Immediate disqualification.</li>
+                <li><strong>Out of Bounds:</strong> If the ball leaves the arena, it is placed at the center of the half
+                    from where the ball fell off.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sumo Modal -->
+    <div id="modal-sumo" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Titan Tussle (Robo Sumo)</h2>
+            <h3>I. Objective</h3>
+            <p>Two robots compete in a circular ring (Dohyo). The goal is to push the opponent out of the ring while
+                remaining inside.</p>
+
+            <h3>II. Robot Specifications</h3>
+            <ul>
+                <li><strong>Weight Class:</strong> Exactly 3.5 kg maximum. This is the most strictly enforced rule.</li>
+                <li><strong>Dimensions:</strong> 300mm x 300mm x 300mm at the start. Once the match begins, robots may
+                    deploy
+                    wedges, arms, or ramps.</li>
+                <li><strong>Materials:</strong> No magnets to increase downforce on a metal floor. No sticky tires that
+                    leave residue. sharp edges that might harm our floor are prohibited.</li>
+                <li><strong>Weaponry:</strong> Non-destructive. Wedges, lifters, and pushers are encouraged. No spinning
+                    blades, flames, or projectiles.</li>
+            </ul>
+
+            <h3>III. The Dohyo (Ring)</h3>
+            <ul>
+                <li><strong>Dimensions:</strong> A circular platform, 150cm in diameter, elevated off the ground.</li>
+                <li><strong>Surface:</strong> Black finish with a 5cm wide White Border (Tawara).</li>
+            </ul>
+
+            <h3>IV. Match Rules</h3>
+            <ul>
+                <li><strong>The Bow:</strong> Robots start 40cm apart, facing away from each other sideways.</li>
+                <li><strong>The 5-Second Rule:</strong> After the "Start" command, there is a 5-second delay where no
+                    robot can move (safety/prep).</li>
+                <li><strong>Victory:</strong> A robot wins a "Yuhkoh" point when: (1) The opponent touches the area
+                    outside the ring. (2) The opponent is flipped and cannot move.</li>
+                <li><strong>Format:</strong> Best of 3 rounds. Each round has a 3-minute limit.</li>
+            </ul>
+
+            <h3>V. Disqualifications</h3>
+            <ul>
+                <li><strong>Passive Play:</strong> If a robot avoids contact for more than 30 seconds, it receives a
+                    warning.</li>
+                <li><strong>Damage:</strong> If a part falls off a robot (larger than 20 grams), the round is stopped
+                    and
+                    the robot may be disqualified if it cannot continue safely.</li>
+                <li><strong>limit:</strong> If a team recieves more than 2 warning is disqualified</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Race Modal -->
+    <div id="modal-race" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Olympus Dash (Robo Race)</h2>
+            <h3>Theme: The Martian Time Trials – High-Speed Solo Pursuit</h3>
+
+            <h3>I. Event Overview</h3>
+            <p>The Olympus Dash is a technical sprint designed to test the limits of a robot’s power-to-weight ratio,
+                traction control, and the operator's handling skills. Unlike a traditional grid race, this is a Time
+                Attack format. Each robot faces the "Olympus Circuit" alone, battling only the clock.</p>
+
+            <h3>II. Robot Technical Requirements</h3>
+            <ul>
+                <li><strong>Dimensions:</strong> The robot must not exceed 350mm x 350mm x 350mm.</li>
+                <li><strong>Weight:</strong> No minimum weight; maximum weight is 6kg.</li>
+                <li><strong>Power:</strong> Maximum battery voltage is 18V DC. Only dry cell or LiPo/Li-ion batteries
+                    are permitted.</li>
+                <li><strong>Drivetrain:</strong> Any number of wheels or tracks are allowed.</li>
+                <li><strong>Safety:</strong> The robot must have an easily accessible "Kill Switch" or the operator must
+                    be able to cut power immediately via the remote.</li>
+            </ul>
+
+            <h3>III. Arena & Track Layout</h3>
+            <p>The track is a 25-meter circuit consisting of:</p>
+            <ol>
+                <li><strong>The Launch Pad:</strong> A 3-meter straight for initial acceleration.</li>
+                <li><strong>The Martian Ridges:</strong> A series of 15mm speed bumps to test suspension.</li>
+                <li><strong>The Dead Turn:</strong> A 180-degree hairpin curve with a radius of 50cm.</li>
+                <li><strong>The Regolith Pit:</strong> A 2-meter section of low-friction surface (simulated dust).</li>
+                <li><strong>The Summit:</strong> A 15-degree incline ramp followed by a 10cm drop-off.</li>
+            </ol>
+
+            <h3>IV. Tournament Format & Scoring</h3>
+            <ul>
+                <li><strong>The "Two-Flight" Rule:</strong> Every registered robot is granted exactly two (2) official
+                    timed runs.</li>
+                <li><strong>Best of Rounds:</strong> The final ranking is determined solely by the single fastest lap
+                    recorded across either of the two runs.</li>
+                <li><strong>Preparation:</strong> Teams are given 2 minutes in the "Staging Area" to check battery
+                    levels and tire grip before their heat begins.</li>
+                <li><strong>Timing:</strong> Time is recorded using a digital stopwatch or IR gate. The clock starts
+                    when the front axle crosses the start line and stops when the same point crosses the finish line.
+                </li>
+            </ul>
+
+            <h3>V. Penalties & Disqualifications</h3>
+            <ul>
+                <li><strong>Off-Track (Minor):</strong> If a robot leaves the track with two wheels but recovers, the
+                    timer continues.</li>
+                <li><strong>Off-Track (Major):</strong> If the robot completely leaves the track, the run is paused. The
+                    operator must return the bot to the point of exit. A +5 second penalty is added to the lap time.
+                </li>
+                <li><strong>Human Touch:</strong> Any intentional human touch to the robot during a run (unless
+                    authorized by a referee for safety) results in a DNF for that specific run.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Line Follower Modal -->
+    <div id="modal-maze" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Labyrinth of Curiosity (Line Follower)</h2>
+            <h3>Theme: Navigating the Trenches – Autonomous Precision Trials</h3>
+
+            <h3>I. Event Overview</h3>
+            <p>This is a test of autonomous logic and sensor calibration. Robots must follow a 2-3cm black line on a
+                white carpeted surface. The "Labyrinth" contains complex geometries designed to confuse standard PID
+                loops, requiring robots to be both fast and "smart."</p>
+
+            <h3>II. Robot Technical Requirements</h3>
+            <ul>
+                <li><strong>Autonomy:</strong> 100% Autonomous. No external communication allowed after the start.</li>
+                <li><strong>Dimensions:</strong> Max footprint of 200mm x 200mm.</li>
+                <li><strong>Sensors:</strong> No limit on the number of IR, LiDAR, or Color sensors.</li>
+                <li><strong>Line Compatibility:</strong> The robot must be capable of tracking a line that fluctuates in
+                    width between 2cm and 3cm.</li>
+                <li><strong>Braking:</strong> The robot must have a programmed "End of Line" detection to stop within
+                    20cm of the finish mark.</li>
+            </ul>
+
+            <h3>III. The Course Architecture</h3>
+            <p><strong>The Path:</strong> Black vinyl tape on a white matte carpet.</p>
+            <p><strong>The Challenges:</strong></p>
+            <ul>
+                <li><strong>Acute Junctions:</strong> Turns sharper than 90 degrees.</li>
+                <li><strong>The Discontinuity:</strong> A 5cm gap in the line (The "Signal Loss" zone).</li>
+                <li><strong>The Intersection:</strong> A cross-junction where the robot must move straight without
+                    turning.</li>
+                <li><strong>The Negative Path:</strong> A 1-meter section where the colors invert (White line on a black
+                    background).</li>
+            </ul>
+
+            <h3>IV. Tournament Format & Scoring</h3>
+            <ul>
+                <li><strong>The "Three-Flight" Rule:</strong> Each robot is allowed three (3) official runs.</li>
+                <li><strong>Best of Rounds:</strong> Only the fastest successful completion out of the three runs will
+                    be counted for the final leaderboard.</li>
+                <li><strong>Run Procedure:</strong> (1) The Explorer: test sensors. (2) The Optimized: high-speed run.
+                    (3) The Final Dash: high-risk attempt.</li>
+                <li><strong>Calibration:</strong> Teams have a 5-minute window in a "Practice Zone" to tune their code
+                    before their first run.</li>
+            </ul>
+
+            <h3>V. Penalties & Logic Failures</h3>
+            <ul>
+                <li><strong>Line Loss:</strong> If the robot loses the line for more than 3 seconds, the run is
+                    terminated and recorded as a DNF.</li>
+                <li><strong>Shortcutting:</strong> If a robot leaves the line and accidentally joins a later section of
+                    the track, that run is disqualified.</li>
+                <li><strong>Hand of God:</strong> Each "Reset" (picking up the robot and placing it back on the line)
+                    incurs a +10 second penalty. Maximum 2 resets allowed per run.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
